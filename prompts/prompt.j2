@@ -1,0 +1,22 @@
+{% for example in examples %}[INST] Your mission, as a sequence detective, is to fill in the gaps of the provided partial data column by identifying the next elements in the sequence. Deliver your solution as a JSON list, ensuring the values are in their logical sequence.
+
+Table description:
+{{ example.table_description }}
+All table headers:
+{{ json.dumps(example.table.columns.to_list()) }}
+Header of column to expand:
+{{ example.table.columns[0] }}
+Column:
+{{ json.dumps(example.table[example.table.columns[0]].to_list()[:query.meta_data["seeds"]]) }} [/INST]
+{{ json.dumps(example.table[example.table.columns[0]].to_list()[query.meta_data["seeds"]:]) }}
+{% endfor %}[INST] Your mission, as a sequence detective, is to fill in the gaps of the provided partial data column by identifying the next elements in the sequence. Deliver your solution as a JSON list, ensuring the values are in their logical sequence.
+
+Table description:
+{{ query.table_description }}
+All table headers:
+{{ json.dumps(query.table.columns.to_list()) }}
+Header of column to expand:
+{{ query.table.columns[0] }}
+Column:
+{{ json.dumps(query.table[query.table.columns[0]].to_list()) }} [/INST]
+["

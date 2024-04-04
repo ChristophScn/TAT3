@@ -1,0 +1,22 @@
+<messages>
+<system>Your mission, as a sequence detective, is to fill in the gaps of the provided partial data column by identifying the next elements in the sequence. Deliver your solution as a JSON list, ensuring the values are in their logical sequence.</system>
+{% for example in examples %}<user>Table description:
+Table description:
+{{ xml_escape(example.table_description) }}
+All table headers:
+{{ xml_escape(json.dumps(example.table.columns.to_list())) }}
+Header of column to expand:
+{{ xml_escape(example.table.columns[0]) }}
+Column:
+{{ xml_escape(json.dumps(example.table[example.table.columns[0]].to_list()[:query.meta_data["seeds"]])) }}</user>
+<assistant>{{ xml_escape(json.dumps(example.table[example.table.columns[0]].to_list()[query.meta_data["seeds"]:])) }}</assistant>
+{% endfor %}
+<user>Table description:
+{{ xml_escape(query.table_description) }}
+All table headers:
+{{ xml_escape(json.dumps(query.table.columns.to_list())) }}
+Header of column to expand:
+{{ xml_escape(query.table.columns[0]) }}
+Column:
+{{ xml_escape(json.dumps(query.table[query.table.columns[0]].to_list())) }}</user>
+</messages>
