@@ -1,5 +1,5 @@
 # TAT3
-This repository contains the source code for my master's thesis Large Language Model-Driven Data Enrichment-
+This repository contains the source code for my master's thesis Large Language Model-Driven Data Enrichment.
 
 
 ## Abstract
